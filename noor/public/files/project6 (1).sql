@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2022 at 10:23 PM
+-- Generation Time: Jun 13, 2022 at 10:40 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -39,21 +39,6 @@ CREATE TABLE `admins` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog`
---
-
-CREATE TABLE `blog` (
-  `blog_id` bigint(20) UNSIGNED NOT NULL,
-  `text` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `blogs`
 --
 
@@ -78,7 +63,6 @@ CREATE TABLE `books` (
   `book_description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `book_author` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `book_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `book_file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `volunteer_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -117,16 +101,16 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(101, '2022_06_10_142924_create_blogs_table', 1),
-(102, '2022_06_11_150326_create_requests_table', 1),
-(103, '2022_06_12_092110_create_respond_table', 1),
-(105, '2014_10_12_000000_create_users_table', 2),
-(106, '2014_10_12_100000_create_password_resets_table', 2),
-(107, '2019_08_19_000000_create_failed_jobs_table', 2),
-(108, '2019_12_14_000001_create_personal_access_tokens_table', 2),
-(109, '2022_06_10_133334_create_admins_table', 2),
-(110, '2022_06_10_141327_create_volunteers_table', 2),
-(111, '2022_06_10_142106_create_books_table', 2);
+(84, '2014_10_12_000000_create_users_table', 1),
+(85, '2014_10_12_100000_create_password_resets_table', 1),
+(86, '2019_08_19_000000_create_failed_jobs_table', 1),
+(87, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(88, '2022_06_10_133334_create_admins_table', 1),
+(89, '2022_06_10_141327_create_volunteers_table', 1),
+(90, '2022_06_10_142106_create_books_table', 1),
+(91, '2022_06_10_142924_create_blogs_table', 1),
+(92, '2022_06_11_150326_create_requests_table', 1),
+(93, '2022_06_12_092110_create_respond_table', 1);
 
 -- --------------------------------------------------------
 
@@ -218,10 +202,7 @@ INSERT INTO `responds` (`respond_id`, `volunteer_id`, `respond_txt`, `respond_fi
 (6, '1', 'scsv', 'bvv', '1', '2022-06-12 09:20:00', '2022-06-12 09:20:00'),
 (7, '1', 'scsv', 'bvv', '1', '2022-06-12 09:20:49', '2022-06-12 09:20:49'),
 (8, '1', 'csc', 'bvv', '1', '2022-06-12 09:22:16', '2022-06-12 09:22:16'),
-(9, '1', 'svsv', 'bvv', '1', '2022-06-12 09:24:02', '2022-06-12 09:24:02'),
-(10, '1', 'abc abc', 's1.png', '1', '2022-06-13 06:42:13', '2022-06-13 06:42:13'),
-(11, '1', 'abc abc', 's1.png', '1', '2022-06-13 06:42:42', '2022-06-13 06:42:42'),
-(12, '1', 'hghghgh', 'Beauty_Care.pptx', '1', '2022-06-13 06:43:52', '2022-06-13 06:43:52');
+(9, '1', 'svsv', 'bvv', '1', '2022-06-12 09:24:02', '2022-06-12 09:24:02');
 
 -- --------------------------------------------------------
 
@@ -244,6 +225,13 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `email_verified_at`, `phone_number`, `city`, `address`, `password`, `password_confirmation`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'ba', 'ba', 'ba@gmail.com', NULL, '0123466787', 'aa', 'aaa', 'Aassdd123', 'Aassdd123', NULL, '2022-06-13 05:37:40', '2022-06-13 05:37:40');
 
 -- --------------------------------------------------------
 
@@ -270,12 +258,6 @@ CREATE TABLE `volunteers` (
 --
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`admin_id`);
-
---
--- Indexes for table `blog`
---
-ALTER TABLE `blog`
-  ADD PRIMARY KEY (`blog_id`);
 
 --
 -- Indexes for table `blogs`
@@ -358,12 +340,6 @@ ALTER TABLE `admins`
   MODIFY `admin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `blog`
---
-ALTER TABLE `blog`
-  MODIFY `blog_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
@@ -385,7 +361,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -409,13 +385,13 @@ ALTER TABLE `respond`
 -- AUTO_INCREMENT for table `responds`
 --
 ALTER TABLE `responds`
-  MODIFY `respond_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `respond_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `volunteers`

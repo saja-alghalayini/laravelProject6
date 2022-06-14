@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthController;
 use App\http\Controllers\BlogController;
+use App\http\Controllers\RequestsController;
 
 
 /*
@@ -40,13 +41,13 @@ Route::view('/request', 'request');
 
 // Route::post('request/send', [BookController::class, 'fileUp']);
 
-Route::get('request/send', [RequestController::class, 'ask']);
+Route::get('request/send', [RequestsController::class, 'ask']);
 
-Route::get('/ask', [RequestController::class, 'displayAsk']);
+Route::get('/ask', [RequestsController::class, 'displayAsk']);
 
 Route::view('/respond', 'respond');
 
-Route::post('/respond/send', [RequestController::class, 'responder']);
+Route::post('/respond/send', [RequestsController::class, 'responder']);
  
 Route::get('/book', [BookController::class, 'index']);
 

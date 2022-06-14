@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\requests;
 use App\Models\book;
 
-class RequestController extends Controller
+class RequestsController extends Controller
 {
     public function ask(Request $request){
         $insert = new requests;

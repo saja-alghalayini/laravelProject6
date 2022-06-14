@@ -10,21 +10,21 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav font-weight-bold mx-auto py-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="index.html" class="nav-item nav-link active">Asks</a>
+                <a href="{{ url('home') }}" class="nav-item nav-link active">Home</a>
+                <a href="{{ url('ask') }}" class="nav-item nav-link active">Asks</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Serves</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="blog.html" class="dropdown-item">Bodcaste Book</a>
-                        <a href="single.html" class="dropdown-item">Transportation</a>
-                        <a href="./team.html" class="dropdown-item">toolss</a>
+                        <a href="{{ url('book') }}" class="dropdown-item">Bodcaste Book</a>
+                        <a href="{{ url('blog') }}" class="dropdown-item">Blog</a>
+                        {{-- <a href="./team.html" class="dropdown-item">toolss</a> --}}
 
                     </div>
                 </div>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="{{ url('about') }}" class="nav-item nav-link">About</a>
+                <a href="{{ url('contact') }}" class="nav-item nav-link">Contact</a>
             </div>
-            <a href="./class.html" class="btn btn-primary px-4">Join Us</a>
+            <a href="{{ url('registration') }}" class="btn btn-primary px-4">Join Us</a>
         </div>
     </nav>
 </div>

@@ -1,37 +1,45 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace App\Http\Controllers;
 
-return new class extends Migration
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\book;
+// use App\Models\responds;
+
+class BookController extends Controller
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('books', function (Blueprint $table) {
-            $table->id('book_id');
-            $table->string('book_name');
-            $table->string('book_description');
-            $table->string('book_author');
-            $table->string('book_image');
-            $table->string('book_file');
-            $table->string('volunteer_id');
-            $table->timestamps();
-        });
+    public function index(){
+        $data = book::all();
+        $id = ['ip' => 0];
+        return view('book', compact('data', 'id'));
     }
+    // public function GetBook(Request $request){
+    //     $search = $request->input('search');
+    //     if($search != ""){
+    //         $data = DB::table('books')->where('book_name', $search)->get();
+    //     }else{
+    //         $data = responds::all();
+    //     }
+    //     return view('book', compact('data', 'id'));
+    // }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('books');
-    }
-};
+    public function fileUp(Request $request){
+        $create=new book();
+        $file= $request->file('file');
+        $filename=$file->getClientOriginalName();
+        $file-> move(public_path('files'), $filename);
+        $file_store= $filename;
+
+        $create->book_name = "go";
+        $create->book_description ="go";
+        $create->book_author ="go";
+        $create->book_image =$file_store;
+        $create->volunteer_id =1;
+
+        $create->save();
+        return redirect();
+        }
+
+
+}

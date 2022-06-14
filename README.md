@@ -1,2 +1,1 @@
-# laravelProject6
-## Project-6
+# group-6
